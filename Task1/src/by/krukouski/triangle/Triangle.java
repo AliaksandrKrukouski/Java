@@ -10,18 +10,4 @@ public class Triangle {
 		this.sideTwo = sideTwo;
 		this.sideThree = sideThree;
 	}
-
-	public double definePerimeter() {
-		return sideOne.defineLength() + sideTwo.defineLength() + sideThree.defineLength();  		
-	}
-	
-	public double defineArea() {
-		double semiPerimeter = definePerimeter() / 2;
-		
-		double diffSideOne = semiPerimeter - sideOne.defineLength();
-		double diffSideTwo = semiPerimeter - sideTwo.defineLength();
-		double diffSideThree = semiPerimeter - sideThree.defineLength();
-		
-		return  Math.sqrt(semiPerimeter * diffSideOne * diffSideTwo * diffSideThree );  		
-	}
 }

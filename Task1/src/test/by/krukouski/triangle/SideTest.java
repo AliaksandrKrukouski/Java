@@ -1,11 +1,11 @@
-package by.krukouski.triangle;
+package test.by.krukouski.triangle;
 
-import static org.junit.Assert.*;
 import org.junit.Assert;
-import org.junit.Test;
+import org.junit.Test; 
+import by.krukouski.triangle.Point;
+import by.krukouski.triangle.Side;
 
-public class SideTest {
-	
+public class SideTest {	
 	@Test
 	public void defineLength() {
 		Point pointOne = new  Point(-1, 3);
