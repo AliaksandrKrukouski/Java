@@ -4,35 +4,38 @@ import org.junit.Assert;
 import org.junit.Test;
 import static org.junit.Assert.fail;
 
-import by.krukouski.triangle.Point;
-import by.krukouski.triangle.Side;
+import java.io.File;
+import java.io.IOException;
+ 
+import by.krukouski.triangle.Reader;
 import by.krukouski.triangle.Triangle;
 import by.krukouski.triangle.Area;
 import by.krukouski.triangle.InvalidTriangleException;
+import by.krukouski.triangle.Parser;
 
 public class AreaTest {
-	private static Triangle triangle;
 
 	@Test
 	public void defineArea() {
-		Point pointOne = new  Point(-1, 3);
-		Point pointTwo = new Point(2, 3);
-		Point pointThree = new Point(2, -1);
+		File testFile = new File("resource/AreaTest.txt");
+		String[] testData;
 		
-		Side sideOne = new  Side(pointOne, pointTwo);
-		Side sideTwo = new Side(pointOne, pointThree);
-		Side sideThree = new Side(pointTwo, pointThree);
+		Triangle triangle;
+				
+		double expected;
+		double actual; 
 		
 	    try {
-	    	triangle = new Triangle(sideOne, sideTwo, sideThree);
-	    } catch(InvalidTriangleException e) {
+	    	testData = Parser.split(Reader.readFile(testFile).get(0), "@"); 
+	    	
+	    	triangle = Parser.buildTriangle(testData[0]);
+	    	
+	    	expected = Double.parseDouble(testData[1]);
+	    	actual = Area.defineArea(triangle);
+			
+			Assert.assertEquals(expected, actual, 0.01);
+	    } catch(InvalidTriangleException | IOException e) {
 	    	fail(e.getMessage());
 	    }
-	    
-		double expected = 6;
-		double actual = Area.defineArea(triangle);
-		
-		Assert.assertEquals(expected, actual, 0.01);
 	}
 }
-

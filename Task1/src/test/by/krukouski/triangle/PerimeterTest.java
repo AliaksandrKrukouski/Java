@@ -2,32 +2,36 @@ package test.by.krukouski.triangle;
 
 import static org.junit.Assert.fail;
 
+import java.io.File;
+import java.io.IOException;
+
 import org.junit.Assert;
 import org.junit.Test;
 import by.krukouski.triangle.*;
 
 public class PerimeterTest {
-	private static Triangle triangle;
  
 	@Test
 	public void definePerimeterTest() {
-		Point pointOne = new  Point(-1, 3);
-		Point pointTwo = new Point(2, 3);
-		Point pointThree = new Point(2, -1);
+		File testFile = new File("resource/PerimeterTest.txt");
+		String[] testData;
 		
-		Side sideOne = new  Side(pointOne, pointTwo);
-		Side sideTwo = new Side(pointOne, pointThree);
-		Side sideThree = new Side(pointTwo, pointThree);
+		Triangle triangle; 
+		
+		double expected;
+		double actual; 
 		
 		try {
-	    	triangle = new Triangle(sideOne, sideTwo, sideThree);
-	    } catch(InvalidTriangleException e) {
+			testData = Parser.split(Reader.readFile(testFile).get(0), "@"); 
+	    	
+	    	triangle = Parser.buildTriangle(testData[0]);
+	    	
+	    	expected = Double.parseDouble(testData[1]);
+	    	actual = Perimeter.definePerimeter(triangle);
+	    	
+	    	Assert.assertEquals(expected, actual, 0.01);
+	    } catch(InvalidTriangleException | IOException e) {
 	    	fail(e.getMessage());
 	    }
-	    
-		double expected = 12;
-		double actual = Perimeter.definePerimeter(triangle);
-		
-		Assert.assertEquals(expected, actual, 0.01);
 	}
 }
