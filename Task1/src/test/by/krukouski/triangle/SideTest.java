@@ -7,7 +7,7 @@ import by.krukouski.triangle.Side;
 
 public class SideTest {	
 	@Test
-	public void defineLength() {
+	public void defineLengthTest() {
 		Point pointOne = new  Point(-1, 3);
 		Point pointTwo = new Point(2, -1);
 		

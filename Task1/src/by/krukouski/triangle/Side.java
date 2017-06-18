@@ -4,6 +4,14 @@ public class Side {
 	private Point pointOne;
 	private Point pointTwo;  
     
+	public Point getPointOne() {
+		return pointOne;
+	}
+	
+	public Point getPointTwo() {
+		return pointTwo;
+	}
+	
 	public Side(Point startPoint, Point endPoint) {
 		this.pointOne = startPoint;
 		this.pointTwo = endPoint;

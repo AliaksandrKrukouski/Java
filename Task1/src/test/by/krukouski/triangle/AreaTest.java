@@ -2,10 +2,13 @@ package test.by.krukouski.triangle;
 
 import org.junit.Assert;
 import org.junit.Test;
+import static org.junit.Assert.fail;
+
 import by.krukouski.triangle.Point;
 import by.krukouski.triangle.Side;
 import by.krukouski.triangle.Triangle;
 import by.krukouski.triangle.Area;
+import by.krukouski.triangle.InvalidTriangleException;
 
 public class AreaTest {
 	private static Triangle triangle;
@@ -20,7 +23,11 @@ public class AreaTest {
 		Side sideTwo = new Side(pointOne, pointThree);
 		Side sideThree = new Side(pointTwo, pointThree);
 		
-	    triangle = new Triangle(sideOne, sideTwo, sideThree);
+	    try {
+	    	triangle = new Triangle(sideOne, sideTwo, sideThree);
+	    } catch(InvalidTriangleException e) {
+	    	fail(e.getMessage());
+	    }
 	    
 		double expected = 6;
 		double actual = Area.defineArea(triangle);
