@@ -1,7 +1,11 @@
-package by.krukouski.triangle;
+package by.krukouski.triangle.fileoperation;
 
-public class Parser {
-	
+import by.krukouski.triangle.exception.InvalidTriangleException;
+import by.krukouski.triangle.figure.Point;
+import by.krukouski.triangle.figure.Side;
+import by.krukouski.triangle.figure.Triangle;
+
+public class StringParser {
 	public static String[] split(String string, String delimiter) {
 		String[] splitString = string.split(delimiter); 
 		return splitString;
@@ -30,5 +34,4 @@ public class Parser {
 		
 		return triangle;
 	} 
-	
 }

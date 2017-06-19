@@ -1,9 +1,10 @@
-package test.by.krukouski.triangle;
+package by.krukouski.triangle.test;
 
 import org.junit.Assert;
-import org.junit.Test; 
-import by.krukouski.triangle.Point;
-import by.krukouski.triangle.Side;
+import org.junit.Test;
+
+import by.krukouski.triangle.figure.Point;
+import by.krukouski.triangle.figure.Side;
 
 public class SideTest {	
 	@Test

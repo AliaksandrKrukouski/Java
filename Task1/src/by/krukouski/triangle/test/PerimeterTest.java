@@ -1,4 +1,4 @@
-package test.by.krukouski.triangle;
+package by.krukouski.triangle.test;
 
 import static org.junit.Assert.fail;
 
@@ -7,7 +7,11 @@ import java.io.IOException;
 
 import org.junit.Assert;
 import org.junit.Test;
-import by.krukouski.triangle.*;
+import by.krukouski.triangle.action.Perimeter;
+import by.krukouski.triangle.exception.InvalidTriangleException;
+import by.krukouski.triangle.figure.Triangle;
+import by.krukouski.triangle.fileoperation.StringParser;
+import by.krukouski.triangle.fileoperation.StringReader;
 
 public class PerimeterTest {
  
@@ -22,9 +26,9 @@ public class PerimeterTest {
 		double actual; 
 		
 		try {
-			testData = Parser.split(Reader.readFile(testFile).get(0), "@"); 
+			testData = StringParser.split(StringReader.readFile(testFile).get(0), "@"); 
 	    	
-	    	triangle = Parser.buildTriangle(testData[0]);
+	    	triangle = StringParser.buildTriangle(testData[0]);
 	    	
 	    	expected = Double.parseDouble(testData[1]);
 	    	actual = Perimeter.definePerimeter(triangle);

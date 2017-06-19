@@ -1,4 +1,4 @@
-package by.krukouski.triangle;
+package by.krukouski.triangle.figure;
 
 public class Point {
 	private double x;
