@@ -27,8 +27,8 @@ public class StringParser {
 		String[] points = pointsString.split(";"); 
 		
 		Side sideOne = buildSide(points[0], points[1]);
-		Side sideTwo = buildSide(points[0], points[2]);
-		Side sideThree = buildSide(points[1], points[2]);
+		Side sideTwo = buildSide(points[1], points[2]);
+		Side sideThree = buildSide(points[0], points[2]);
 		
 		Triangle triangle = new Triangle(sideOne, sideTwo, sideThree); 
 		

@@ -12,41 +12,36 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
-import by.krukouski.triangle.action.Perimeter;
 import by.krukouski.triangle.exception.InvalidTriangleException;
 import by.krukouski.triangle.figure.Triangle;
 import by.krukouski.triangle.fileoperation.StringParser;
 import by.krukouski.triangle.fileoperation.StringReader;
 
 @RunWith(Parameterized.class)
-public class PerimeterTest {
+public class RightTriangleTest {
 	private String testData; 
 	
-	public PerimeterTest(String testData) {
+	public RightTriangleTest(String testData) {
 		this.testData = testData;
 	}
 	
 	@Parameters
 	public static ArrayList<String> generateTestData() throws IOException {  
-		return StringReader.readFile(new File("resource/PerimeterTest.txt"));
+		return StringReader.readFile(new File("resource/RightTriangleTest.txt"));
 	}
 	
 	@Test
-	public void definePerimeterTest() {
-		String[] testDataParsed;
-		
-		Triangle triangle;
+	public void Triangle() {
+		Triangle triangle ;
 		
 		double expected;
-		double actual; 
+		double actual;
 		
-		try {
-			testDataParsed = StringParser.split(testData, "@"); 
+		try {	    	
+			triangle = StringParser.buildTriangle(testData);
 	    	
-			triangle = StringParser.buildTriangle(testDataParsed[0]);
-	    	
-	    	expected = Double.parseDouble(testDataParsed[1]);
-	    	actual = Perimeter.definePerimeter(triangle);
+	    	expected = Math.hypot(triangle.getSideOne().defineLength(), triangle.getSideTwo().defineLength());
+	    	actual = triangle.getSideThree().defineLength();
 	    	
 	    	Assert.assertEquals(expected, actual, 0.01);
 	    } catch(InvalidTriangleException e) {
