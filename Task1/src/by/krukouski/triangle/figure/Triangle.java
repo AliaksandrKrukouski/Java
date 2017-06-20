@@ -1,9 +1,12 @@
 package by.krukouski.triangle.figure;
 
+import java.util.logging.Logger;
+
 import by.krukouski.triangle.exception.InvalidTriangleException;
 
 public class Triangle {
-
+	static Logger logger = Logger.getLogger(Triangle.class.getName());
+	
 	private Side sideOne;
 	private Side sideTwo;
 	private Side sideThree;    
@@ -14,7 +17,8 @@ public class Triangle {
 			this.sideTwo = sideTwo;
 			this.sideThree = sideThree;
 		} else {
-			throw new InvalidTriangleException("All points are on the same line.");
+			logger.warning("Logger - All points are on the same line");
+			throw new InvalidTriangleException("All points are on the same line."); 
 		}
 	}
 	
