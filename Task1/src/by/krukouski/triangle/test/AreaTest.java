@@ -13,9 +13,11 @@ import java.io.IOException;
 import java.util.ArrayList; 
 
 import by.krukouski.triangle.action.Area;
+import by.krukouski.triangle.exception.FileNotExistsException;
+import by.krukouski.triangle.exception.IncorrectInputParameterException;
 import by.krukouski.triangle.exception.InvalidTriangleException;
+import by.krukouski.triangle.figure.FigureBuilder;
 import by.krukouski.triangle.figure.Triangle;
-import by.krukouski.triangle.fileoperation.StringParser;
 import by.krukouski.triangle.fileoperation.StringReader;
 
 @RunWith(Parameterized.class)
@@ -27,7 +29,7 @@ public class AreaTest {
 	}
 
 	@Parameters
-	public static ArrayList<String> generateTestData() throws IOException {  
+	public static ArrayList<String> generateTestData() throws IOException, FileNotExistsException {  
 		return StringReader.readFile(new File("resource/AreaTest.txt"));
 	}
 	
@@ -41,15 +43,15 @@ public class AreaTest {
 		double actual; 
 		
 	    try {
-	    	testDataParsed = StringParser.split(testData, "@"); 
+	    	testDataParsed = testData.split("@"); 
 	    	
-	    	triangle = StringParser.buildTriangle(testDataParsed[0]);
+	    	triangle = FigureBuilder.buildTriangle(testDataParsed[0], ";", ",");
 	    	
 	    	expected = Double.parseDouble(testDataParsed[1]);
 	    	actual = Area.defineArea(triangle);
 			
 			Assert.assertEquals(expected, actual, 0.01);
-	    } catch(InvalidTriangleException e) {
+	    } catch(InvalidTriangleException | IncorrectInputParameterException e) {
 	    	fail(e.getMessage());
 	    }
 	}

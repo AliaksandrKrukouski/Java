@@ -1,8 +1,13 @@
 package by.krukouski.triangle.action;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import by.krukouski.triangle.figure.Triangle;
 
 public class Area {
+	private static Logger logger = LogManager.getLogger(Area.class.getName());
+	
 	public static double defineArea(Triangle triangle) {
 		double semiPerimeter = Perimeter.definePerimeter(triangle) / 2;
 		
@@ -10,6 +15,10 @@ public class Area {
 		double diffSideTwo = semiPerimeter - triangle.getSideTwo().defineLength();
 		double diffSideThree = semiPerimeter - triangle.getSideThree().defineLength();
 		
-		return  Math.sqrt(semiPerimeter * diffSideOne * diffSideTwo * diffSideThree );  		
+		double area = Math.sqrt(semiPerimeter * diffSideOne * diffSideTwo * diffSideThree);
+		
+		logger.info("Area is " + area);
+		
+		return area;  		
 	}
 }

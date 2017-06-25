@@ -12,9 +12,11 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
+import by.krukouski.triangle.exception.FileNotExistsException;
+import by.krukouski.triangle.exception.IncorrectInputParameterException;
 import by.krukouski.triangle.exception.InvalidTriangleException;
+import by.krukouski.triangle.figure.FigureBuilder;
 import by.krukouski.triangle.figure.Triangle;
-import by.krukouski.triangle.fileoperation.StringParser;
 import by.krukouski.triangle.fileoperation.StringReader;
 
 @RunWith(Parameterized.class)
@@ -26,7 +28,7 @@ public class RightTriangleTest {
 	}
 	
 	@Parameters
-	public static ArrayList<String> generateTestData() throws IOException {  
+	public static ArrayList<String> generateTestData() throws IOException, FileNotExistsException {  
 		return StringReader.readFile(new File("resource/RightTriangleTest.txt"));
 	}
 	
@@ -38,13 +40,13 @@ public class RightTriangleTest {
 		double actual;
 		
 		try {	    	
-			triangle = StringParser.buildTriangle(testData);
+			triangle = FigureBuilder.buildTriangle(testData, ";", ",");
 	    	
 	    	expected = Math.hypot(triangle.getSideOne().defineLength(), triangle.getSideTwo().defineLength());
 	    	actual = triangle.getSideThree().defineLength();
 	    	
 	    	Assert.assertEquals(expected, actual, 0.01);
-	    } catch(InvalidTriangleException e) {
+	    } catch(InvalidTriangleException | IncorrectInputParameterException e) {
 	    	fail(e.getMessage());
 	    }
 	}

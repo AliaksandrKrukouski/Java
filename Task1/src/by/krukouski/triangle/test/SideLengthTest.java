@@ -1,5 +1,7 @@
 package by.krukouski.triangle.test;
 
+import static org.junit.Assert.fail;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -10,8 +12,10 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
+import by.krukouski.triangle.exception.FileNotExistsException;
+import by.krukouski.triangle.exception.IncorrectInputParameterException;
+import by.krukouski.triangle.figure.FigureBuilder;
 import by.krukouski.triangle.figure.Side;
-import by.krukouski.triangle.fileoperation.StringParser;
 import by.krukouski.triangle.fileoperation.StringReader;
 
 @RunWith(Parameterized.class)
@@ -23,17 +27,23 @@ public class SideLengthTest {
 	}
 	
 	@Parameters
-	public static ArrayList<String> generateTestData() throws IOException {  
+	public static ArrayList<String> generateTestData() throws IOException, FileNotExistsException {  
 		return StringReader.readFile(new File("resource/SideLengthTest.txt"));
 	}
 	
 	@Test
 	public void defineLengthTest() {
-		String[] testDataParsed = StringParser.split(testData, "@");
+		Side side = null;
 		
-		String[] testDataPoints = StringParser.split(testDataParsed[0], ";"); 
+		String[] testDataParsed = testData.split("@");
 		
-		Side side = StringParser.buildSide(testDataPoints[0], testDataPoints[1]);
+		String[] testDataPoints = testDataParsed[0].split(";"); 
+		
+		try {
+			side = FigureBuilder.buildSide(testDataPoints[0], testDataPoints[1], ",");
+		} catch (IncorrectInputParameterException e) {
+			fail(e.getMessage());
+		}
 		
 		double expected = Double.parseDouble(testDataParsed[1]); 
 		double actual = side.defineLength();
