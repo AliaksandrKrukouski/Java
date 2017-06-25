@@ -5,11 +5,14 @@ import org.apache.logging.log4j.Logger;
 
 import by.krukouski.triangle.exception.IncorrectInputParameterException;
 import by.krukouski.triangle.exception.InvalidTriangleException;
+import by.krukouski.triangle.exception.TriangleIsBusyException;
 
 public class FigureBuilder {
-	private static Logger logger = LogManager.getLogger(Triangle.class.getName());
+	private static Logger logger = LogManager.getLogger(SingleTriangle.class.getName());
 	
-	public static Triangle buildTriangle(String points, String pointDelimiter, String coordinateDelimiter) throws InvalidTriangleException, IncorrectInputParameterException {
+	public static SingleTriangle buildTriangle(String points, String pointDelimiter, String coordinateDelimiter) throws InvalidTriangleException, IncorrectInputParameterException, TriangleIsBusyException {
+		SingleTriangle triangle = null;
+		
 		String[] pointsArray = points.split(pointDelimiter);
 		
 		if (pointsArray.length != 3) {
@@ -21,7 +24,13 @@ public class FigureBuilder {
 		Side sideTwo = buildSide(pointsArray[1], pointsArray[2], coordinateDelimiter);
 		Side sideThree = buildSide(pointsArray[0], pointsArray[2], coordinateDelimiter);
 		
-		Triangle triangle = new Triangle(sideOne, sideTwo, sideThree);
+		try {
+			triangle = SingleTriangle.getTriangle();
+			triangle.initTriangle(sideOne, sideTwo, sideThree); 
+		} catch(InvalidTriangleException e) {
+			triangle.releaseTriangle();
+			throw e;
+		}
 		
 		return triangle;
 	}

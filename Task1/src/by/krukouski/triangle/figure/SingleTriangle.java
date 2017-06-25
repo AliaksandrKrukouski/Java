@@ -2,23 +2,63 @@ package by.krukouski.triangle.figure;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import by.krukouski.triangle.exception.InvalidTriangleException;
 
-public class Triangle {
-	private static Logger logger = LogManager.getLogger(Triangle.class.getName());
+import by.krukouski.triangle.exception.InvalidTriangleException;
+import by.krukouski.triangle.exception.TriangleIsBusyException;
+
+public class SingleTriangle {
+	private static Logger logger = LogManager.getLogger(SingleTriangle.class.getName());
+	
+	private static SingleTriangle triangle;  
+	private static boolean triangleIsAvailable = true;
 	
 	private Side sideOne;
 	private Side sideTwo;
 	private Side sideThree;    
 	
-	public Triangle(Side sideOne, Side sideTwo, Side sideThree) throws InvalidTriangleException  {
+	private SingleTriangle() {}
+	
+	public static SingleTriangle getTriangle() throws TriangleIsBusyException {
+		if (triangleIsAvailable) {
+			if (triangle == null) {
+				triangle = new SingleTriangle();
+			}
+			
+			triangleIsAvailable = false; 
+			logger.info("Triangle is got");
+		} else {
+			logger.error("Triangle is busy");
+			throw new TriangleIsBusyException("Triangle is busy");
+		}	
+		
+		return triangle;
+	}
+	
+	public void releaseTriangle() {
+		if (!(triangle == null)) {
+			triangle = null;
+			
+			this.setSideOne(null);
+			this.setSideTwo(null);
+			this.setSideThree(null);
+			
+			triangleIsAvailable = true;
+			
+			logger.info("Triangle is released");
+		} else {
+			logger.info("Triangle is already released");
+		}
+	}
+	
+	public void initTriangle(Side sideOne, Side sideTwo, Side sideThree) throws InvalidTriangleException {
+		
 		if (validate(sideOne, sideTwo)) {
 			this.sideOne = sideOne;
 			this.sideTwo = sideTwo;
 			this.sideThree = sideThree;
-			logger.info("Triangle created: " + toString());
+			logger.info("Triangle is initialized: " + toString());
 		} else {
-			logger.error("Triangle did not created - all points are on the same line: " + toString(sideOne, sideTwo, sideThree));
+			logger.error("Triangle is not initialized - all points are on the same line: " + toString(sideOne, sideTwo, sideThree));
 			throw new InvalidTriangleException("Triangle did not created. All points are on the same line: "+ toString(sideOne, sideTwo, sideThree)); 
 		}
 	}

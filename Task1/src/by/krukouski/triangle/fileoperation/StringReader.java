@@ -10,10 +10,10 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import by.krukouski.triangle.exception.FileNotExistsException;
-import by.krukouski.triangle.figure.Triangle;
+import by.krukouski.triangle.figure.SingleTriangle;
 
 public class StringReader {
-	private static Logger logger = LogManager.getLogger(Triangle.class.getName());
+	private static Logger logger = LogManager.getLogger(SingleTriangle.class.getName());
 	
 	public static ArrayList<String> readFile(File file) throws IOException, FileNotExistsException {
 		BufferedReader reader = null; 

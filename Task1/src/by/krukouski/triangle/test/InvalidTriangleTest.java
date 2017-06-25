@@ -14,6 +14,7 @@ import org.junit.runners.Parameterized.Parameters;
 import by.krukouski.triangle.exception.FileNotExistsException;
 import by.krukouski.triangle.exception.IncorrectInputParameterException;
 import by.krukouski.triangle.exception.InvalidTriangleException;
+import by.krukouski.triangle.exception.TriangleIsBusyException;
 import by.krukouski.triangle.figure.FigureBuilder;
 import by.krukouski.triangle.fileoperation.StringReader;
 
@@ -34,7 +35,7 @@ public class InvalidTriangleTest {
 	public void Triangle() throws InvalidTriangleException {
 		try {
 			FigureBuilder.buildTriangle(testData, ";", ",");
-		} catch (IncorrectInputParameterException e) {
+		} catch (IncorrectInputParameterException | TriangleIsBusyException e) {
 			fail(e.getMessage());
 		}
 	}
