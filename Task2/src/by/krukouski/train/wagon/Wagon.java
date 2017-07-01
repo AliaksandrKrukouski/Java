@@ -1,25 +1,25 @@
 package by.krukouski.train.wagon;
 
-public class Wagon { 
-	private int id; 
+public abstract class Wagon { 
+	private long id; 
 	private int length;
-	private int weight;
-	private int trackWidth;
+	private int width;
+	private int weight; 
 	
 	public Wagon() {};
 	
-	public Wagon(int id, int length, int weight, int trackWidth) {
+	public Wagon(int id, int length, int width, int weight) {
 		this.id = id;
 		this.length = length;
+		this.width = width;
 		this.weight = weight;
-		this.trackWidth = trackWidth;
 	}
  
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 
@@ -31,6 +31,14 @@ public class Wagon {
 		this.length = length;
 	}
 
+	public int getWidth() {
+		return width;
+	}
+
+	public void settWidth(int width) {
+		this.width = width;
+	}
+	
 	public int getWeight() {
 		return weight;
 	}
@@ -39,11 +47,10 @@ public class Wagon {
 		this.weight = weight;
 	}
 
-	public int getTrackWidth() {
-		return trackWidth;
+	@Override
+	public String toString() {
+		return "id=" + id + ", length=" + length + ", width=" + width + ", weight=" + weight;
 	}
 
-	public void setTrackWidth(int trackWidth) {
-		this.trackWidth = trackWidth;
-	}
+    
 }
