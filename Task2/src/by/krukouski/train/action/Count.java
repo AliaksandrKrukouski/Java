@@ -8,24 +8,23 @@ import by.krukouski.train.wagon.Wagon;
 
 public class Count {
 
-	public static int getPassengerCount(Train train) {
-		int count = 0;
+	public static int countTotalSeatNumber(Train train) {
+		int totalSeatNumber = 0;
 		
 		for (Wagon wagon:train.getTrain()) {
-			count += wagon instanceof PassengerWagon ? 1 : 0;
+			totalSeatNumber += wagon instanceof PassengerWagon ? ((PassengerWagon) wagon).getSeatNumber() : 0;
 		}
 		
-		return count; 
+		return totalSeatNumber; 
 	}
 
-	public static int getBaggageCount(Train train) {
-		int count = 0;
+	public static double countTotalCapacity(Train train) {
+		double totalCapacity = 0;
 		
 		for (Wagon wagon:train.getTrain()) {
-			count += wagon instanceof BaggageWagon ? 1 : 0;
+			totalCapacity += wagon instanceof BaggageWagon ? ((BaggageWagon) wagon).getCapacity() : 0;
 		}
 		
-		return count; 
+		return totalCapacity; 
 	}
-
 }
