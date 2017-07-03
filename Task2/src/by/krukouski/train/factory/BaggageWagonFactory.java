@@ -8,7 +8,7 @@ public class BaggageWagonFactory extends WagonFactory {
 		return new BaggageWagon();
 	}
 
-	public BaggageWagon createWagon(int id, int length, int width, int weight, double capacity) { 
+	public static BaggageWagon createWagon(int id, int length, int width, int weight, double capacity) { 
 		return new BaggageWagon(id, length, width, weight, capacity);
 	}
 }

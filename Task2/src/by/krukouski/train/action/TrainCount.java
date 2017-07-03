@@ -6,7 +6,7 @@ import by.krukouski.train.wagon.BaggageWagon;
 import by.krukouski.train.wagon.PassengerWagon;
 import by.krukouski.train.wagon.Wagon;
 
-public class Count {
+public class TrainCount {
 
 	public static int countTrainSeatNumber(Train train) {
 		int trainSeatNumber = 0;

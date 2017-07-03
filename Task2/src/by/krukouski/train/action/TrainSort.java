@@ -3,7 +3,7 @@ package by.krukouski.train.action;
 import java.util.Comparator;
 import by.krukouski.train.wagon.Wagon;
 
-public class Sort {
+public class TrainSort {
 	static final Comparator<Wagon> LENGTH_ASC = new Comparator<Wagon>() {
 		public int compare(Wagon wagonOne, Wagon wagonTwo) {
 			return wagonOne.getLength() - wagonTwo.getLength();

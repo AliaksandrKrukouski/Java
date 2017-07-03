@@ -9,7 +9,7 @@ public class LocomotiveWagonFactory extends WagonFactory {
 		return new LocomotiveWagon();
 	}
 	
-	public LocomotiveWagon createWagon(int id, int length, int width, int weight, EngineType engineType, int maxSpeed) { 
+	public static LocomotiveWagon createWagon(int id, int length, int width, int weight, EngineType engineType, int maxSpeed) { 
 		return new LocomotiveWagon(id, length, width, weight, engineType, maxSpeed);
 	}
 }

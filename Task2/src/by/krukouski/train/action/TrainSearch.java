@@ -6,7 +6,7 @@ import by.krukouski.train.train.Train;
 import by.krukouski.train.wagon.PassengerWagon;
 import by.krukouski.train.wagon.Wagon;
 
-public class Search {
+public class TrainSearch {
 
 	public static ArrayList<Wagon> searchWagonBySeatNumber(Train train, int minSeatNumber, int maxSeatNumber) {
 		ArrayList<Wagon> searchResult = new ArrayList<Wagon>();
