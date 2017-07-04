@@ -31,7 +31,33 @@ public class LocomotiveWagon extends Wagon {
 	public void setMaxSpeed(int maxSpeed) {
 		this.maxSpeed = maxSpeed;
 	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (obj == null) { return false; }
+		
+	    if (obj == this) { return true; }
+	    
+	    if (!(obj instanceof LocomotiveWagon)) { return false; }
+	    
+	    if (!super.equals(obj)) { return false; }
+	    
+	    LocomotiveWagon wagon = (LocomotiveWagon) obj;
+ 
+		return engineType == wagon.getEngineType() &&
+			   maxSpeed == wagon.getMaxSpeed();
+	}
 
+	@Override
+	public int hashCode() {
+		int hash  = super.hashCode();
+		
+		hash = 31 * hash + ((engineType == null) ? 0 : engineType.hashCode());  
+		hash = 31 * hash + maxSpeed;
+		
+		return hash;
+	}
+	
 	@Override
 	public String toString() {
 		return "LocomotiveWagon [" + super.toString() + ", engineType=" + engineType + ", maxSpeed=" + maxSpeed + "]";

@@ -46,11 +46,37 @@ public abstract class Wagon {
 	public void setWeight(int weight) {
 		this.weight = weight;
 	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (obj == null) { return false; }
+		
+	    if (obj == this) { return true; }
+	    
+	    if (!(obj instanceof Wagon)) { return false; }
+	    
+	    Wagon wagon = (Wagon) obj;
+	    
+	    return id == wagon.getId() && 
+	    	   length == wagon.getLength() && 
+	    	   weight == wagon.getWeight() &&
+	    	   width == wagon.getWidth(); 
+	}
+
+	@Override
+	public int hashCode() {
+		int hash  = 31;
+		
+		hash = 31 * hash + (int) id;
+		hash = 31 * hash + length; 
+		hash = 31 * hash + width;
+		hash = 31 * hash + weight;
+		
+		return hash;
+	}
 
 	@Override
 	public String toString() {
 		return "id=" + id + ", length=" + length + ", width=" + width + ", weight=" + weight;
 	}
-
-    
 }
