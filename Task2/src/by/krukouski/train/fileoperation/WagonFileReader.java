@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 import by.krukouski.train.exception.FileNotExistsException;
 
-public class StringReader {
+public class WagonFileReader {
 
 	public static ArrayList<String> readFileIntoList (String path) throws IOException, FileNotExistsException {
 		File file = new File(path);
