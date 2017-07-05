@@ -14,13 +14,5 @@ public class TrainSort {
 		public int compare(Wagon wagonOne, Wagon wagonTwo) {
 			return wagonOne.getWidth() - wagonTwo.getWidth();
 		}
-	};
-	
-	public static final Comparator<Wagon> WEIGHT_ASC = new Comparator<Wagon>() {
-		public int compare(Wagon wagonOne, Wagon wagonTwo) {
-			return wagonOne.getWeight() - wagonTwo.getWeight();
-		}
-	};
-	
-	
+	};	
 }
