@@ -10,4 +10,8 @@ public class TextSymbol implements TextComponentInterface {
 	@Override
 	public void addComponent(TextComponentInterface component) {}
 
+	@Override
+	public String toString() {
+		return symbol;
+	}
 }

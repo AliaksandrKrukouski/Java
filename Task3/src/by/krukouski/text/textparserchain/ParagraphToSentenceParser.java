@@ -10,7 +10,7 @@ import by.krukouski.text.textconstant.TextType;
 public class ParagraphToSentenceParser implements TextParserInterface {
 	private static String regexpSentence = "\\p{Alnum}+[\\p{Print}&&[^\\.?!]]+[\\.?!]+";
 	private TextComposite sentenceComposite = new TextComposite(TextType.SENTENCE);
-	private SentenceToLexemeParser lexemeParser = new SentenceToLexemeParser();
+	private SentenceToLexemeParser senetenceParser = new SentenceToLexemeParser();
  
 	@Override
 	public TextComponentInterface parse(String paragraph) {
@@ -22,7 +22,7 @@ public class ParagraphToSentenceParser implements TextParserInterface {
 			sentence = matcher.group();
 			System.out.println("   Sentence: " + sentence);
 			
-			sentenceComposite.addComponent(lexemeParser.parse(sentence));
+			sentenceComposite.addComponent(senetenceParser.parse(sentence));
 		}
 		
 		return sentenceComposite;
