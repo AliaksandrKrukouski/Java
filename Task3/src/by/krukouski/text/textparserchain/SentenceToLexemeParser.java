@@ -11,8 +11,8 @@ import by.krukouski.text.textconstant.TextType;
 public class SentenceToLexemeParser implements TextParserInterface {
 	private static String regexpLexeme = "\\p{Graph}+";
 	private TextComposite lexemeComposite = new TextComposite(TextType.LEXEME);
-	private LexemeToWordParser wordParser = new LexemeToWordParser();
-	private LexemeToPunctuationParser punctuationParser = new LexemeToPunctuationParser();
+//	private LexemeToWordParser wordParser = new LexemeToWordParser();
+//	private LexemeToPunctuationParser punctuationParser = new LexemeToPunctuationParser();
 
 	@Override
 	public TextComponentInterface parse(String sentence) {
@@ -24,9 +24,9 @@ public class SentenceToLexemeParser implements TextParserInterface {
 			lexeme = matcher.group();
 			System.out.println("      Lexeme: " + lexeme);
 			
-			lexemeComposite.addComponent(punctuationParser.parse(lexeme, BeginEnd.BEGIN));
-			lexemeComposite.addComponent(wordParser.parse(lexeme));
-			lexemeComposite.addComponent(punctuationParser.parse(lexeme, BeginEnd.END));
+			lexemeComposite.addComponent(new LexemeToPunctuationParser().parse(lexeme, BeginEnd.BEGIN));
+			lexemeComposite.addComponent(new LexemeToWordParser().parse(lexeme));
+			lexemeComposite.addComponent(new LexemeToPunctuationParser().parse(lexeme, BeginEnd.END));
 		}
 		
 		return lexemeComposite;

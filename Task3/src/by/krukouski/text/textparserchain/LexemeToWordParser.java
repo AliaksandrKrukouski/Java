@@ -10,7 +10,7 @@ import by.krukouski.text.textconstant.TextType;
 public class LexemeToWordParser implements TextParserInterface {
 	private static String regexpWord = "[\\p{Alnum}-']+[^\\p{Punct}]*"; 
 	private TextComposite wordComposite = new TextComposite(TextType.WORD);
-	private WordPunctToSymbolParser symbolParser = new WordPunctToSymbolParser();
+//	private WordPunctToSymbolParser symbolParser = new WordPunctToSymbolParser();
 	
 	@Override
 	public TextComponentInterface parse(String lexeme) {
@@ -22,7 +22,7 @@ public class LexemeToWordParser implements TextParserInterface {
 			word = matcherWord.group();
 			System.out.println("        Word: " + word);
 			 
-			wordComposite.addComponent(symbolParser.parse(word)); 
+			wordComposite.addComponent(new WordPunctToSymbolParser().parse(word)); 
 		}
 		
 		return wordComposite;

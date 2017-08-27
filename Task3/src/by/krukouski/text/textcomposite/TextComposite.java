@@ -21,33 +21,15 @@ public class TextComposite implements TextComponentInterface {
 	public String toString() {
 		String resultString = new String();
 		for(TextComponentInterface component:componentList) {
-			switch (compositeType) {
-				case SYMBOL:
-					System.out.println("Gather text (SYMBOL):" + component);
-					resultString = resultString + component.toString();
-					break;
-				case PUNCTUATION:
-					resultString = resultString + component.toString();
-					break;				
-			    case WORD:
-			    	System.out.println("Gather text (WORD):" + component);
-			    	resultString = resultString + component.toString();
-			    	break;
+			switch (compositeType) { 
 				case LEXEME:
-					System.out.println("Gather text (LEXEME):" + component);
-					resultString = resultString + component.toString();
-					break;
-				case SENTENCE:
-					System.out.println("Gather text (SENTENCE):" + component);
-					resultString = resultString + component.toString() + " ";	
-					break;
+					resultString = resultString + component.toString() + " ";
+					break;			
 				case PARAGRAPH:
-					System.out.println("Gather text (PARAGRAPH):" + component);
-					resultString = resultString + component.toString() + " ";	
+					resultString = resultString + component.toString() + "\n";	
 					break;
 				default:
-					System.out.println("Gather text (DEFAULT):" + component);
-					//resultString = component.toString();	
+					resultString = resultString + component.toString();	
 					break;
 			}
 		}

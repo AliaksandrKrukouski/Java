@@ -10,7 +10,7 @@ import by.krukouski.text.textconstant.TextType;
 public class TextToParagraphParser implements TextParserInterface { 
 	private static String regexpParagraph = ".+\n*?"; 
 	private TextComposite paragraphComposite = new TextComposite(TextType.PARAGRAPH);
-	private ParagraphToSentenceParser paragraphParser = new ParagraphToSentenceParser();
+//	private ParagraphToSentenceParser paragraphParser = new ParagraphToSentenceParser();
 	
 	@Override
 	public TextComponentInterface parse(String text) { 
@@ -21,7 +21,7 @@ public class TextToParagraphParser implements TextParserInterface {
 		while (matcher.find()) {
 			paragraph = matcher.group();
 			System.out.println("Paragraph: " +  paragraph);
-			paragraphComposite.addComponent(paragraphParser.parse(paragraph)); 
+			paragraphComposite.addComponent(new ParagraphToSentenceParser().parse(paragraph)); 
 		}
 		
 		return paragraphComposite;
