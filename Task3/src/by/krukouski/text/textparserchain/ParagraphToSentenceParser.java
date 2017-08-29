@@ -20,7 +20,7 @@ public class ParagraphToSentenceParser implements TextParserInterface {
 		
 		while (matcher.find()) {
 			sentence = matcher.group();
-			System.out.println("   Sentence: " + sentence);
+//			System.out.println("   Sentence: " + sentence);
 			
 			sentenceComposite.addComponent(new SentenceToLexemeParser().parse(sentence));
 		}

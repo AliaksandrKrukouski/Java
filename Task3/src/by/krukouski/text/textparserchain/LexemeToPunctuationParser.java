@@ -26,7 +26,7 @@ public class LexemeToPunctuationParser implements TextParserInterface {
 		
 		while(matcherPunct.find()) {
 			punct = matcherPunct.group();
-			System.out.println("        Punct: " + punct);
+//			System.out.println("        Punct: " + punct);
 			 
 			punctComposite.addComponent(new WordPunctToSymbolParser().parse(punct)); 
 		}

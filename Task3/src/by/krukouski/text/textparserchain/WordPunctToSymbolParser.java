@@ -20,7 +20,7 @@ public class WordPunctToSymbolParser implements TextParserInterface {
 		
 		while(matcherSymbol.find()) {
 			symbol = matcherSymbol.group();
-			System.out.println("          Symbol: " + symbol);
+//			System.out.println("          Symbol: " + symbol);
 			symbolComposite.addComponent(new TextSymbol(symbol));
 		}
 		

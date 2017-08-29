@@ -16,15 +16,24 @@ public class TextComposite implements TextComponentInterface {
 	public void addComponent(TextComponentInterface component) {
 		componentList.add(component);
 	}
-
+	
+	public ArrayList<TextComponentInterface> getComponentList() {
+		return componentList;
+	}
+    
+	public TextType getCompositeType() {
+		return compositeType;
+	}
+	
 	@Override
 	public String toString() {
 		String resultString = new String();
+		
 		for(TextComponentInterface component:componentList) {
 			switch (compositeType) { 
-				case LEXEME:
-					resultString = resultString + component.toString() + " ";
-					break;			
+				case LEXEME: 
+					resultString = resultString + component.toString() + (component.toString().length() > 0 ? " " : "");
+					break;			 
 				case PARAGRAPH:
 					resultString = resultString + component.toString() + "\n";	
 					break;
@@ -34,6 +43,6 @@ public class TextComposite implements TextComponentInterface {
 			}
 		}
 		
-		return resultString;
+		return resultString.replaceAll(" (\\p{Punct}+)", "$1");
 	}
 }

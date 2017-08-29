@@ -20,7 +20,7 @@ public class LexemeToWordParser implements TextParserInterface {
 				
 		while(matcherWord.find()) {
 			word = matcherWord.group();
-			System.out.println("        Word: " + word);
+//			System.out.println("        Word: " + word);
 			 
 			wordComposite.addComponent(new WordPunctToSymbolParser().parse(word)); 
 		}

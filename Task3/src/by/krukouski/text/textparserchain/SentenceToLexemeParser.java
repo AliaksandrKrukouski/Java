@@ -22,7 +22,7 @@ public class SentenceToLexemeParser implements TextParserInterface {
 		
 		while(matcher.find()) {
 			lexeme = matcher.group();
-			System.out.println("      Lexeme: " + lexeme);
+//			System.out.println("      Lexeme: " + lexeme);
 			
 			lexemeComposite.addComponent(new LexemeToPunctuationParser().parse(lexeme, BeginEnd.BEGIN));
 			lexemeComposite.addComponent(new LexemeToWordParser().parse(lexeme));

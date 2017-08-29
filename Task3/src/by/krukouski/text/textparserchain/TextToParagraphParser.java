@@ -20,7 +20,7 @@ public class TextToParagraphParser implements TextParserInterface {
 		
 		while (matcher.find()) {
 			paragraph = matcher.group();
-			System.out.println("Paragraph: " +  paragraph);
+//			System.out.println("Paragraph: " +  paragraph);
 			paragraphComposite.addComponent(new ParagraphToSentenceParser().parse(paragraph)); 
 		}
 		
