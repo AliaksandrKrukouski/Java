@@ -13,7 +13,7 @@ public final class SeaPort {
 		semaphore = new Semaphore(seaPortCapacity); 
 	}
 	
-	public static SeaPort getSeaPortSingleton(int seaPortCapacity) {
+	public static SeaPort getSeaPort(int seaPortCapacity) {
 		lock.lock();
 		
 		try {
