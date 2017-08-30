@@ -10,7 +10,7 @@ public final class SeaPort {
 	private static Semaphore semaphore;   
 	
 	private SeaPort(int seaPortCapacity) { 
-		semaphore = new Semaphore(seaPortCapacity);
+		semaphore = new Semaphore(seaPortCapacity); 
 	}
 	
 	public static SeaPort getSeaPortSingleton(int seaPortCapacity) {
