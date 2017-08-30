@@ -35,13 +35,13 @@ public class RepeatedWordSentence {
 					  if (numRepeatedWords > 1) { 
 						  repeatedWords.add(lexemeComposite.toString() + " (" + numRepeatedWords + ")");
 					  }
-				  }  
+				  }
 			  }
 			  
 			  if (repeatedWords.size() > 0) {
 				  System.out.println(sentenceComposite.toString() + repeatedWords);
-			  }	
-		  } 
+			  }
+		  }
 	  }
   }
   

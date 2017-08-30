@@ -1,5 +1,8 @@
 package by.krukouski.text.textparserchain;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -9,6 +12,7 @@ import by.krukouski.text.textconstant.BeginEnd;
 import by.krukouski.text.textconstant.TextType;
 
 public class LexemeToPunctuationParser implements TextParserInterface {
+	private static Logger logger = LogManager.getLogger(LexemeToPunctuationParser.class.getName());
 	private TextComposite punctComposite = new TextComposite(TextType.PUNCTUATION);
 	
 	@Override
@@ -25,7 +29,7 @@ public class LexemeToPunctuationParser implements TextParserInterface {
 		
 		while(matcherPunct.find()) {
 			punct = matcherPunct.group();
-//			System.out.println("        Punct: " + punct);
+            logger.info("Punctuation: " + punct);
 			 
 			punctComposite.addComponent(new WordPunctToSymbolParser().parse(punct)); 
 		}
