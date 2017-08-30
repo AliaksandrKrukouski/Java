@@ -12,17 +12,19 @@ import by.krukouski.text.textparserchain.TextToParagraphParser;
 public class RepeatedWordSentence {
 
   public static void showRepeatedWordSentences(String text) {
+	  int numRepeatedWords = 0;
+	  HashSet<String> repeatedWords = new HashSet<String>();
 	  TextComposite textComposite = (TextComposite) new TextToParagraphParser().parse(text);
 	  
-	  for (TextComponentInterface paragraphComposite:textComposite.getComponentList()) {
-		 
+	  for (TextComponentInterface paragraphComposite:textComposite.getComponentList()) {		 
+
 		  for (TextComponentInterface sentenceComposite: ((TextComposite) paragraphComposite).getComponentList()) { 
-			  HashSet<String> repeatedWords = new HashSet<String>();
-			  
-			  for (TextComponentInterface lexemeComposite: ((TextComposite) sentenceComposite).getComponentList()) {
-				  
+			  repeatedWords = new HashSet<String>();			  
+
+			  for (TextComponentInterface lexemeComposite: ((TextComposite) sentenceComposite).getComponentList()) {				  
+
 				  if (((TextComposite) lexemeComposite).getCompositeType() == TextType.WORD) {  
-					  int numRepeatedWords = 0;
+					  numRepeatedWords = 0;
 					  Pattern pattern = Pattern.compile("\\b" + lexemeComposite.toString() + "\\b");
 					  Matcher matcher = pattern.matcher(sentenceComposite.toString());  
 					  
@@ -31,15 +33,15 @@ public class RepeatedWordSentence {
 					  }
 					  
 					  if (numRepeatedWords > 1) { 
-						  repeatedWords.add(lexemeComposite.toString() + "(" + numRepeatedWords + ")");
+						  repeatedWords.add(lexemeComposite.toString() + " (" + numRepeatedWords + ")");
 					  }
-				  }  
+				  }
 			  }
 			  
 			  if (repeatedWords.size() > 0) {
 				  System.out.println(sentenceComposite.toString() + repeatedWords);
-			  }	
-		  } 
+			  }
+		  }
 	  }
   }
   

@@ -1,7 +1,7 @@
 package by.krukouski.text.textcomposite;
 
 public class TextSymbol implements TextComponentInterface {
-	String symbol;
+	private String symbol;
 	
 	public TextSymbol(String symbol) {
 		this.symbol = symbol;

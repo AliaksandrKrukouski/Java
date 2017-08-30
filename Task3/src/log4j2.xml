@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+	<properties>
+		<property name="name">chainparser</property>
+		<property name="pattern">%d{yyyy-MM-dd HH:mm:ss} [%t] %-5level %logger{5} - %msg%n</property>
+	</properties>
+	<appenders> 
+		<RollingFile name="RollingFile" fileName="logs/${name}.log"
+				 filePattern="logs/archive/${name}-%d{yyyy-MM-dd-HH-mm-ss}.log">
+			<PatternLayout>
+				<pattern>${pattern}</pattern>
+			</PatternLayout>
+			<Policies>
+				<SizeBasedTriggeringPolicy size="150 KB"/>
+			</Policies>
+		</RollingFile>
+	</appenders>
+	<loggers>
+		<root level="debug"> 
+			<appender-ref ref="RollingFile"/>
+		</root>
+	</loggers>
+</configuration>
