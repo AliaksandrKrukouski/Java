@@ -5,8 +5,8 @@ import java.util.ArrayList;
 import by.krukouski.text.textconstant.TextType;
 
 public class TextComposite implements TextComponentInterface {
-	ArrayList<TextComponentInterface> componentList = new ArrayList<TextComponentInterface>();
-	TextType compositeType;
+	private ArrayList<TextComponentInterface> componentList = new ArrayList<TextComponentInterface>();
+	private TextType compositeType;
 	
 	public TextComposite(TextType compositType) {
 		this.compositeType = compositType;

@@ -11,8 +11,6 @@ import by.krukouski.text.textconstant.TextType;
 public class SentenceToLexemeParser implements TextParserInterface {
 	private static String regexpLexeme = "\\p{Graph}+";
 	private TextComposite lexemeComposite = new TextComposite(TextType.LEXEME);
-//	private LexemeToWordParser wordParser = new LexemeToWordParser();
-//	private LexemeToPunctuationParser punctuationParser = new LexemeToPunctuationParser();
 
 	@Override
 	public TextComponentInterface parse(String sentence) {

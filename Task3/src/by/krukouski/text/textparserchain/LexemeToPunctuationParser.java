@@ -10,7 +10,6 @@ import by.krukouski.text.textconstant.TextType;
 
 public class LexemeToPunctuationParser implements TextParserInterface {
 	private TextComposite punctComposite = new TextComposite(TextType.PUNCTUATION);
-//	private WordPunctToSymbolParser symbolParser = new WordPunctToSymbolParser();
 	
 	@Override
 	public TextComponentInterface parse(String lexeme) {		

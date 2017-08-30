@@ -10,7 +10,6 @@ import by.krukouski.text.textconstant.TextType;
 public class TextToParagraphParser implements TextParserInterface { 
 	private static String regexpParagraph = ".+\n*?"; 
 	private TextComposite paragraphComposite = new TextComposite(TextType.PARAGRAPH);
-//	private ParagraphToSentenceParser paragraphParser = new ParagraphToSentenceParser();
 	
 	@Override
 	public TextComponentInterface parse(String text) { 
