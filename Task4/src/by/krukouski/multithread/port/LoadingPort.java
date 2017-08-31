@@ -1,30 +1,30 @@
-package by.krukouski.multithread.seaportsingletone;
+package by.krukouski.multithread.port;
 
 import java.util.concurrent.Semaphore;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
-public final class SeaPort {
-	private static SeaPort seaPort;
+public final class LoadingPort {
+	private static LoadingPort port;
 	private static Lock lock = new ReentrantLock(); 
 	private static Semaphore semaphore;   
 	
-	private SeaPort(int seaPortCapacity) { 
-		semaphore = new Semaphore(seaPortCapacity); 
+	private LoadingPort(int portCapacity) { 
+		semaphore = new Semaphore(portCapacity); 
 	}
 	
-	public static SeaPort getSeaPort(int seaPortCapacity) {
+	public static LoadingPort getPort(int portCapacity) {
 		lock.lock();
 		
 		try {
-			if (seaPort == null) {
-				seaPort = new SeaPort(seaPortCapacity);
+			if (port == null) {
+				port = new LoadingPort(portCapacity);
 			}
 		} finally {	
 			lock.unlock();
 		}	
 		
-		return seaPort;
+		return port;
 	}
 	
 	public void toArrive() {
