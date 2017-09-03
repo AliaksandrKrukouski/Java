@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.example.org/flowers" xmlns:tns="http://www.example.org/flowers" elementFormDefault="qualified">
+
+    <element name="flowers"> 
+		<complexType> 
+			<sequence>
+				<element name="flower" type="tns:flowerType" minOccurs="1" maxOccurs="unbounded" />
+			</sequence>	
+        </complexType>
+	<element>
+	
+	<complexType name="flowerType">
+		<sequence> 
+			<element name="name" type="ID"/>
+			<element name="solid" type="tns:solidType"/>
+			<element name="origin" type="string"/>
+			<element name="visualParams" type="tns:visualParamsType"/>
+		</sequence>
+	</complexType>
+	
+	<simpleType name="solidType">
+		<restriction base="string">
+			<enumiration value="Podzol"></enumiration>
+			<enumiration value="Chernozem"></enumiration>
+			<enumiration value="Sand"></enumiration>
+		</restriction>
+	</simpleType>
+	
+	<complexType name="visualParamsType">
+		<sequence>
+			<element name="stalkColor" type="tns:colorType"/>
+			<element name="leafColor" type="tns:colorType"/>
+			<element name="avgSize" type="int">
+		</sequence>
+		<atribute name="sizeIn" use="optional" default="Centimeter">
+			<simpleType>
+				<restriction base="string">
+					<enumiration value="Centimeter"></enumiration>
+					<enumiration value="Meter"></enumiration>
+				</restriction>
+			</simpleType>
+		</atribute>
+	</complexType>
+</schema>
