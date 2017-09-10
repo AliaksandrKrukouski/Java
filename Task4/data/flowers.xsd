@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.example.org/flowers" xmlns:tns="http://www.example.org/flowers" elementFormDefault="qualified">
+<schema xmlns="http://www.w3.org/2001/XMLSchema" 
+        targetNamespace="http://www.example.org/flowers" 
+		xmlns:tns="http://www.example.org/flowers" 
+		elementFormDefault="qualified">
 
     <element name="flowers"> 
 		<complexType> 
@@ -12,33 +15,80 @@
 	<complexType name="flowerType">
 		<sequence> 
 			<element name="name" type="ID"/>
-			<element name="solid" type="tns:solidType"/>
-			<element name="origin" type="string"/>
-			<element name="visualParams" type="tns:visualParamsType"/>
+			<element name="solid">
+				<simpleType>
+					<restriction base="string">
+						<enumiration value="Podzol"></enumiration>
+						<enumiration value="Chernozem"></enumiration>
+						<enumiration value="Sand"></enumiration>
+						<enumiration value="Clay"></enumiration>
+					</restriction>
+				</simpleType>
+			</element>
+			<element name="origin">
+				<simpleType>
+					<restriction base="string">
+						<pattern value="[A-Za-z ]"/>
+					</restriction>
+				</simpleType>	
+			</element>	
+			<element name="visual" type="tns:visualType"/>
+			<element name="tips" type="tns:tipsType"/>
 		</sequence>
 	</complexType>
 	
-	<simpleType name="solidType">
+	<complexType name="visualType">
+		<sequence>
+			<element name="stalkColor" type="tns:colorType">  
+			<element name="leafColor" type="tns:colorType"> 
+			<element name="length">
+				<complexType>
+					<restriction base="integer">
+						<xs:minInclusive value = "1"/>
+						<xs:minInclusive value = "100"/> 						
+					</restriction>
+					<atribute name="measure" type="tns:lengthType" use="optional" default="Centimeter">	
+				<complexType>	
+			</element>
+		</sequence>
+	</complexType>
+	
+	<simpleType name="colorType">
 		<restriction base="string">
-			<enumiration value="Podzol"></enumiration>
-			<enumiration value="Chernozem"></enumiration>
-			<enumiration value="Sand"></enumiration>
+			<enumeration value="Brown"/>
+			<enumeration value="Green"/>
+			<enumeration value="Red"/>
+			<enumeration value="Yellow"/>
+			<enumeration value="Purple"/>
 		</restriction>
 	</simpleType>
+
+    <simpleType name="lengthType">
+		<restriction base="string">
+			<enumeration value="Centimeter"/>
+			<enumeration value="Meter"/>
+		</restriction>
+	</simpleType>	
 	
-	<complexType name="visualParamsType">
+	<complexType name="tipsType">
 		<sequence>
-			<element name="stalkColor" type="tns:colorType"/>
-			<element name="leafColor" type="tns:colorType"/>
-			<element name="avgSize" type="int">
+			<element name="temperature">
+				<complexType>
+					type="tns:tempType">
+				<complexType>			
+			</element>
+			<element name="light">
+				<simpleType>
+					<restriction base="string">
+						<enumeration value="Y"/>
+						<enumeration value="N"/>
+					</restriction>
+				</simpleType>	
+			</element>	
+			<element name="water" type="tns:waterType"/> 
 		</sequence>
-		<atribute name="sizeIn" use="optional" default="Centimeter">
-			<simpleType>
-				<restriction base="string">
-					<enumiration value="Centimeter"></enumiration>
-					<enumiration value="Meter"></enumiration>
-				</restriction>
-			</simpleType>
-		</atribute>
 	</complexType>
+	
+	
+	
 </schema>

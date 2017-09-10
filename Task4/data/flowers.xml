@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flowers>
+	<flower>
+		<name>Rose</name>
+		<soil>Chernozem</soil>
+		<origin>Italy</origin>
+		<visual>
+			<stalkColor>Green</stalkColor>
+			<leafColor>Red</leafColor>
+			<length measure="Meter">2</length>
+		</visual>
+		<tips>
+			<temperature measure="Celsius">25</temperature>
+			<light>Y</light>
+			<water measure="Litre" frequency="Week">1</water>	
+		</tips>
+		<multiplying>Stalk</multiplying>
+	</flower>
+	<flower>
+		<name>Tulips</name>
+		<soil>Clay</soil>
+		<origin>The Netherland</origin>
+		<visual>
+			<stalkColor>Green</stalkColor>
+			<leafColor>Yellow</leafColor>
+			<length measure="Meter">1</length>
+		</visual>
+		<tips>
+			<temperature measure="Celsius">18</temperature>
+			<light>Y</light>
+			<water measure="Mililitre" frequency="Day">500</water>	
+		</tips>
+		<multiplying>Bulb</multiplying>
+	</flower>
+	<flower>
+		<name>Orchidaceae</name>
+		<soil>Podzol</soil>
+		<origin>India</origin>
+		<visual>
+			<stalkColor>Green</stalkColor>
+			<leafColor>Purple</leafColor>
+			<length measure="Centimeter">50</length>
+		</visual>
+		<tips>
+			<temperature measure="Fahrenheit">86</temperature>
+			<light>Y</light>
+			<water measure="Litre" frequency="Day">1</water>	
+		</tips>
+		<multiplying>Seeds</multiplying>
+	</flower>
+</flowers>
