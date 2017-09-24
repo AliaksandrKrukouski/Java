@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<flowers>
+<flowers xmlns="http://www.example.org/flowers" 
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+         xsi:schemaLocation="http://www.example.org/flowers flowers.xsd">
 	<flower>
 		<name>Rose</name>
-		<soil>Chernozem</soil>
+		<solid>Chernozem</solid>
 		<origin>Italy</origin>
 		<visual>
 			<stalkColor>Green</stalkColor>
@@ -18,7 +20,7 @@
 	</flower>
 	<flower>
 		<name>Tulips</name>
-		<soil>Clay</soil>
+		<solid>Clay</solid>
 		<origin>The Netherland</origin>
 		<visual>
 			<stalkColor>Green</stalkColor>
@@ -34,7 +36,7 @@
 	</flower>
 	<flower>
 		<name>Orchidaceae</name>
-		<soil>Podzol</soil>
+		<solid>Podzol</solid>
 		<origin>India</origin>
 		<visual>
 			<stalkColor>Green</stalkColor>

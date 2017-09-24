@@ -10,7 +10,7 @@
 				<element name="flower" type="tns:flowerType" minOccurs="1" maxOccurs="unbounded"/>
 			</sequence>	
         </complexType>
-	<element>
+	</element>
 	
 	<complexType name="flowerType">
 		<sequence> 
@@ -25,26 +25,33 @@
 			<element name="origin">
 				<simpleType>
 					<restriction base="string">
-						<pattern value="([A-Z][a-z] -')*"/>
+						<pattern value="[A-Z].*"/>
 					</restriction>
 				</simpleType>	
 			</element>	
 			<element name="visual" type="tns:visualType"/>
 			<element name="tips" type="tns:tipsType"/>
+			<element name="multiplying">
+				<simpleType>
+					<restriction base="string">
+						<pattern value="Stalk|Bulb|Seeds"/>
+					</restriction>	
+				</simpleType>
+			</element>	
 		</sequence>
 	</complexType>
 	
 	<complexType name="visualType">
 		<sequence>
-			<element name="stalkColor" type="tns:colorType">  
-			<element name="leafColor" type="tns:colorType"> 
+			<element name="stalkColor" type="tns:colorType"/>  
+			<element name="leafColor" type="tns:colorType"/> 
 			<element name="length">
 				<complexType>
 					<simpleContent>
-						<extention base="positiveInteger"> 
-							<attribute name="measure" type="tns:lengthMeasureType" use="required" default="Centimeter"/>				
-						</extention> 
-					</simpleComtent>
+						<extension base="positiveInteger"> 
+							<attribute name="measure" type="tns:lengthMeasureType" use="optional" default="Centimeter"/>				
+						</extension> 
+					</simpleContent>
 				</complexType>	
 			</element>
 		</sequence>
@@ -72,9 +79,9 @@
 			<element name="temperature">
 				<complexType>
 					<simpleContent>
-						<extention base="positiveInteger">  
-							<attribute name="measure" type="tns:tempMeasureType" use="required" default="Celsius"/>
-						</extention>	 
+						<extension base="positiveInteger">  
+							<attribute name="measure" type="tns:tempMeasureType" use="optional" default="Celsius"/>
+						</extension>	 
 					</simpleContent>
 				</complexType>			
 			</element>
@@ -88,10 +95,10 @@
 			<element name="water">
 				<complexType>
 					<simpleContent>
-						<extention base="positiveInteger"> 
-							<attribute name="measure" type="tns:waterMeasureType" use="required" default="Mililitre"/>
-							<attribute name="frequency" type="tns:freqMeasureType" use="required" default="Day"/>						
-						</extention> 
+						<extension base="positiveInteger"> 
+							<attribute name="measure" type="tns:waterMeasureType" use="required"/>
+							<attribute name="frequency" type="tns:freqMeasureType" use="required"/>						
+						</extension> 
 					</simpleContent>
 				</complexType>
 			</element>
@@ -112,7 +119,7 @@
 		</restriction>
 	</simpleType>
 	
-	<simpleType name="waterMeasureType">
+	<simpleType name="freqMeasureType">
 		<restriction base="string">
 			<enumeration value="Day"/>
 			<enumeration value="Week"/>
