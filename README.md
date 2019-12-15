@@ -1,1 +1,1 @@
-# JavaRepository project
+# JavaRepository
